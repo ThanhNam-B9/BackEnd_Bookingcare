@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get CRUD</title>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td,
+      th {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        text-align: center;
+      }
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      button {
+        border: 2px solid yellow;
+        outline: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        width: 60px;
+        cursor: pointer;
+      }
+      a:last-child button {
+        border: 1px solid red;
+      }
+      a:last-child button:hover {
+        background-color: red;
+      }
+      a:first-child button:hover {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+      <% for(var i=0; i < dataTable.length; i++) { %>
+      <tr>
+        <td><%= dataTable[i].email %></td>
+        <td><%= dataTable[i].firstName %></td>
+        <td><%= dataTable[i].lastName %></td>
+        <td><%= dataTable[i].address %></td>
+        <td>
+          <a href="http://localhost:8080/edit-crud?id=<%=dataTable[i].id%>"
+            ><button class="btn-edit">Edit</button></a
+          >
+          <a href="http://localhost:8080/delete-crud?id=<%=dataTable[i].id%>">
+            <button class="btn-delete">Delete</button>
+          </a>
+        </td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html>
