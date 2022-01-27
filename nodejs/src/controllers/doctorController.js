@@ -14,7 +14,74 @@ let handleGetTopDoctorHome = async (req, res) => {
     });
   }
 };
-
+let handleGetAllDoctor = async (req, res) => {
+  try {
+    let doctors = await doctorService.getAllDoctors();
+    return res.status(200).json(doctors);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      message: "Error from server !",
+    });
+  }
+};
+let handlePostInfoDoctor = async (req, res) => {
+  try {
+    let response = await doctorService.postSaveDetailInfoDoctor(req.body);
+    return res.status(200).json(response);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      message: "Error from server !",
+    });
+  }
+};
+let handleGetDetailDoctorById = async (req, res) => {
+  try {
+    let infor = await doctorService.getDetailDoctorById(req.query.id);
+    return res.status(200).json(infor);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      message: "Error from the server!",
+    });
+  }
+};
+let handleBulkCreateSchedule = async (req, res) => {
+  try {
+    let scheduleData = await doctorService.bulkCreateSchedule(req.body);
+    return res.status(200).json(scheduleData);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      message: "Error from the server!",
+    });
+  }
+};
+let handleGetScheduleDoctorByDate = async (req, res) => {
+  try {
+    let scheduleByDate = await doctorService.getScheduleDoctorByDate(
+      req.query.doctorId,
+      req.query.date
+    );
+    return res.status(200).json(scheduleByDate);
+  } catch (e) {
+    console.log(e);
+    return res.status(200).json({
+      errCode: -1,
+      message: "Error from the server!",
+    });
+  }
+};
 module.exports = {
   handleGetTopDoctorHome: handleGetTopDoctorHome,
+  handleGetAllDoctor: handleGetAllDoctor,
+  handlePostInfoDoctor: handlePostInfoDoctor,
+  handleGetDetailDoctorById: handleGetDetailDoctorById,
+  handleBulkCreateSchedule: handleBulkCreateSchedule,
+  handleGetScheduleDoctorByDate: handleGetScheduleDoctorByDate,
 };

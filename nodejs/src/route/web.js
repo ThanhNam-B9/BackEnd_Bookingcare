@@ -28,6 +28,20 @@ let initWebRoutes = (app) => {
   router.get("/api/allcodes", userController.handleGetAllCode);
   //doctor
   router.get("/api/top-doctor-home", doctorController.handleGetTopDoctorHome);
+  router.get("/api/get-all-doctors", doctorController.handleGetAllDoctor);
+  router.post("/api/save-info-doctors", doctorController.handlePostInfoDoctor);
+  router.get(
+    "/api/get-detail-doctor-by-id",
+    doctorController.handleGetDetailDoctorById
+  );
+  router.post(
+    "/api/bulk-create-schedule",
+    doctorController.handleBulkCreateSchedule
+  );
+  router.get(
+    "/api/get-schedule-doctor-by-date",
+    doctorController.handleGetScheduleDoctorByDate
+  );
 
   return app.use("/", router);
 };
