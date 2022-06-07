@@ -2,6 +2,7 @@ import express from "express";
 import homeController from "../controllers/homeController";
 import userController from "../controllers/userController";
 import doctorController from "../controllers/doctorController";
+import patientController from "../controllers/patientController";
 
 let router = express.Router();
 
@@ -18,7 +19,7 @@ let initWebRoutes = (app) => {
   router.get("/edit-crud", homeController.getEditCRUD);
   router.post("/put-crud", homeController.putCRUD);
   router.get("/delete-crud", homeController.getDeleteCRUD);
-  // reactjs-crud
+  // reactjs-crud\
   router.post("/api/login", userController.handleLogin);
   router.get("/api/get-all-users", userController.handleGetAllUsers);
   router.post("/api/create-new-user", userController.handleCreateNewUser);
@@ -41,6 +42,23 @@ let initWebRoutes = (app) => {
   router.get(
     "/api/get-schedule-doctor-by-date",
     doctorController.handleGetScheduleDoctorByDate
+  );
+  router.get(
+    "/api/get-extra-infor-doctor-by-id",
+    doctorController.handleGetExtraInforDoctorById
+  );
+  router.get(
+    "/api/get-extra-infor-doctor-by-id",
+    doctorController.handleGetExtraInforDoctorById
+  );
+  router.get(
+    "/api/get-profile-doctor-by-id",
+    doctorController.handleGetProfileDoctorById
+  );
+  //patient
+  router.post(
+    "/api/patient-book-appointment",
+    patientController.handlePostPatientBookAppointment
   );
 
   return app.use("/", router);
