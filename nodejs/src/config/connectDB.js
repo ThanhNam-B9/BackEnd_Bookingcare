@@ -1,9 +1,14 @@
 const { Sequelize } = require("sequelize");
-const sequelize = new Sequelize("tnamit", "root", null, {
-  host: "localhost",
-  dialect: "mysql",
-  logging: false,
-});
+const sequelize = new Sequelize(
+  "heroku_f91d81ae7bc5a2e",
+  "be753cabfec398",
+  "e94b712a",
+  {
+    host: "us-cdbr-east-06.cleardb.net",
+    dialect: "mysql",
+    logging: false,
+  }
+);
 
 let connectDB = async () => {
   try {

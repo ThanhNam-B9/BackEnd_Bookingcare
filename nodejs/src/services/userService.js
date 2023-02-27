@@ -20,9 +20,7 @@ let handleUserLogin = (email, password) => {
               delete user.password,
               (userData.user = user);
           } else {
-            (userData.errCode = 3),
-              (userData.message = `
-            Incorrect password!`);
+            (userData.errCode = 3), (userData.message = `Incorrect password!`);
           }
         } else {
           (userData.errCode = 2),
@@ -88,7 +86,7 @@ let createNewUser = (data) => {
             "Your email is already in the system! Please use another email",
         });
       } else {
-        let hashPasswordFromBcryptjs = await hashUserPassword(data.password);
+        let hashPasswordFromBcryptjs = await hashUserPaassword(data.password);
         await db.User.create({
           email: data.email,
           password: hashPasswordFromBcryptjs,
